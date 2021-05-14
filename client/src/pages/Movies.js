@@ -6,7 +6,14 @@ function Movies() {
         <div>
             <Cards />
             <br></br>
-            <button class="btn btn-sm btn-primary btn-block text-uppercase" type="submit">My Matched Movies</button>
+            <button
+                class="btn btn-sm btn-primary btn-block text-uppercase"
+                type="submit"
+                onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = '/Matched';
+                }}
+            >My Matched Movies</button>
         </div>
     )
 }
