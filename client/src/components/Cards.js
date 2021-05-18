@@ -1,6 +1,7 @@
-import { React, useState } from 'react';
+import { React, useEffect, useState } from 'react';
 import TinderCard from 'react-tinder-card';
 import YoutubeEmbed from "./YoutubeEmbed";
+import API from '../utils/API'
 
 const db = [
   {
@@ -18,36 +19,50 @@ const db = [
 ]
 
 function Cards() {
-  const movies = db
+  
+  // const movies = db
+  const [movies, setMovies] = useState([])
   const [lastDirection, setLastDirection] = useState()
+
+  // Load all books and store them with setBooks
+  useEffect(() => {
+    API.getMovies()
+      .then(res => 
+        setMovies(res.data)
+      )
+      .catch(err => console.log(err));
+  }, [])
 
   const swiped = (direction, nameToDelete) => {
     console.log('removing: ' + nameToDelete)
     setLastDirection(direction)
   }
 
-  const outOfFrame = (name) => {
-    console.log(name + ' left the screen!')
+  const outOfFrame = (title) => {
+    console.log(title + ' left the screen!')
   }
 
   return (
-    <div>
-      <h3 className='infoText'>Swipe RIGHT or LEFT to choose your movie!</h3>
-
+    <div> 
+      <br></br>
+      <br></br>
+      <br></br>
+      <h3 className='infoText'>Swipe right to decline and left to accept the movie!</h3>
+      <br></br>
       <div className='cardContainer'>
         <br></br>
         {movies.map((movie) =>
           <TinderCard
             className='swipe'
-            key={movie.name}
+            key={movie.title}
             onSwipe={(dir) =>
-              swiped(dir, movie.name)}
+              swiped(dir, movie.title)}
             onCardLeftScreen={() =>
-              outOfFrame(movie.name)}>
+              outOfFrame(movie.title)}>
             <div className="col-3" >
               <div className='card'>
-                <YoutubeEmbed embedId={movie.id} />
-                <h3><i class="far fa-times-circle"></i>SWIPE<i class="far fa-check-circle"></i></h3>
+                <YoutubeEmbed embedId={movie.source} />
+                <h3><i class="fas fa-angle-double-left"></i><i class="fas fa-angle-double-left"></i> S W I P E <i class="fas fa-angle-double-right"></i><i class="fas fa-angle-double-right"></i></h3>
               </div>
             </div>
 
@@ -55,6 +70,8 @@ function Cards() {
           </TinderCard>
         )}
       </div>
+      <br></br>
+      <br></br>
       <br></br>
       <br></br>
       {lastDirection ? <h2 className='infoText'>You swiped {lastDirection}</h2> : <h2 className='infoText' />}

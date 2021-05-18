@@ -4346,7 +4346,7 @@ input[type=button].btn-block {
 
 .card {
   flex-direction: column;
-  border: 6px solid rgba(0, 0, 0, 0.125);
+  border: 6px solid rgba(0, 0, 0, 0.24);
   border-radius: 0.25rem;
 }
 .card > hr {
@@ -10054,11 +10054,12 @@ h2 {
   width: 90vw;
   max-width: 600px;
   height: 350px;
+  align-items: center;
 }
 
 .card {
   position: relative;
-  background-color: #fff;
+  background-color: rgb(173, 173, 173);
   width: 90vw;
   max-width: 600px;
   height: 400px;
@@ -10088,7 +10089,7 @@ h2 {
   height: 28px;
   justify-content: center;
   display: flex;
-  color: #fff;
+  color: rgb(255, 255, 255);
   animation-name: popup;
   animation-duration: 800ms;
 }

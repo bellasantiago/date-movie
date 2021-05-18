@@ -1,5 +1,6 @@
-import React from 'react'
-import Cards from '../components/Cards'
+import React from 'react';
+import Cards from '../components/Cards';
+
 
 function Movies() {
     return (
@@ -7,7 +8,7 @@ function Movies() {
             <Cards />
             <br></br>
             <button
-                class="btn btn-sm btn-primary btn-block text-uppercase"
+                className="btn btn-sm btn-primary btn-block text-uppercase"
                 type="submit"
                 onClick={(e) => {
                     e.preventDefault();

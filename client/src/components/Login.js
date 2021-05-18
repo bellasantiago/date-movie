@@ -15,13 +15,13 @@ function Login() {
                                         <input type="text" id="inputUserame" className="form-control" placeholder="Username" required autofocus />
                                         <label for="inputUserame">Username</label>
                                     </div>
-                                    <div class="form-label-group">
-                                        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required />
+                                    <div className="form-label-group">
+                                        <input type="password" id="inputPassword" className="form-control" placeholder="Password" required />
                                         <label for="inputPassword">Password</label>
                                     </div>
 
                                     <button
-                                        class="btn btn-lg btn-primary btn-block text-uppercase"
+                                        className="btn btn-lg btn-primary btn-block text-uppercase"
                                         type="submit"
                                         onClick={(e) => {
                                             e.preventDefault();
