@@ -37,11 +37,17 @@ function Cards() {
       <div className='cardContainer'>
         <br></br>
         {movies.map((movie) =>
-          <TinderCard className='swipe' key={movie.name} onSwipe={(dir) => swiped(dir, movie.name)} onCardLeftScreen={() => outOfFrame(movie.name)}>
-            <div className="col-3">
+          <TinderCard
+            className='swipe'
+            key={movie.name}
+            onSwipe={(dir) =>
+              swiped(dir, movie.name)}
+            onCardLeftScreen={() =>
+              outOfFrame(movie.name)}>
+            <div className="col-3" >
               <div className='card'>
                 <YoutubeEmbed embedId={movie.id} />
-                <h3>{movie.name}</h3>
+                <h3><i class="far fa-times-circle"></i>SWIPE<i class="far fa-check-circle"></i></h3>
               </div>
             </div>
 
