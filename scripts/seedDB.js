@@ -6,94 +6,94 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/date-movie");
 const movieSeed = [
   {
     title: "Avatar",
-    id: "5PSNL1qE6VY"
+    source: "5PSNL1qE6VY"
   },{
     title: "Scarface",
-    id: "7pQQHnqBa2E"
+    source: "7pQQHnqBa2E"
   },{
     title: "The Notebook",
-    id: "yDJIcYE32NU"
+    source: "yDJIcYE32NU"
   },{
     title: "Audition",
-    id: "EBQHp2__AVQ"
+    source: "EBQHp2__AVQ"
   },{
     title: "Young Frankenstein",
-    id: "ZL9Q_0JtMNA"
+    source: "ZL9Q_0JtMNA"
   },{
     title: "The One Percent",
-    id: "Nva4s76JW_o"
+    source: "Nva4s76JW_o"
   },{
     title: "Cinderella Man",
-    id: "DlbHzcH4VJY"
+    source: "DlbHzcH4VJY"
   },{
     title: "Bad Boys",
-    id: "Xm12NSa8jsM"
+    source: "Xm12NSa8jsM"
   },{
     title: "Unforgiven",
-    id: "ftTX4FoBWlE"
+    source: "ftTX4FoBWlE"
   },{
     title: "Leon: The Professional",
-    id: "jawVxq1Iyl0"
+    source: "jawVxq1Iyl0"
   },{
     title: "Love & Basketball",
-    id: "Ur83i6_BjbE"
+    source: "Ur83i6_BjbE"
   },{
     title: "The Hurt Locker",
-    id: "AIbFvqFYRT4"
+    source: "AIbFvqFYRT4"
   },{
     title: "Princess Bride",
-    id: "WNNUcHRiPS8"
+    source: "WNNUcHRiPS8"
   },{
     title: "Inside Man",
-    id: "FSH-dbbiroI"
+    source: "FSH-dbbiroI"
   },{
     title: "Bill & Ted’s Bogus Journey",
-    id: "iHIWmKB8GR4"
+    source: "iHIWmKB8GR4"
   },{
     title: "Mr. & Mrs. Smith",
-    id: "CZ0B22z22pI"
+    source: "CZ0B22z22pI"
   },{
     title: "Love Actually",
-    id: "H9Z3_ifFheQ"
+    source: "H9Z3_ifFheQ"
   },{
     title: "Good Will Hunting",
-    id: "PaZVjZEFkRs"
+    source: "PaZVjZEFkRs"
   },{
     title: "Where The Buffalo Roam",
-    id: "_ZT6fziaIIw"
+    source: "_ZT6fziaIIw"
   },{
     title: "Back to the Future",
-    id: "qvsgGtivCgs"
+    source: "qvsgGtivCgs"
   },{
     title: "Grandma’s Boy",
-    id: "Bi5CfCHknZs"
+    source: "Bi5CfCHknZs"
   },{
     title: "The Shawshank Redemption",
-    id: "6hB3S9bIaco"
+    source: "6hB3S9bIaco"
   },{
     title: "Pirates of the Caribbean: The Curse of the Black Pearl",
-    id: "naQr0uTrH_s"
+    source: "naQr0uTrH_s"
   },{
     title: "Network",
-    id: "1cSGvqQHpjs"
+    source: "1cSGvqQHpjs"
   },{
     title: "Braveheart",
-    id: "1NJO0jxBtMo"
+    source: "1NJO0jxBtMo"
   },{
     title: "Gandhi",
-    id: "B7I6D3mSYTE"
+    source: "B7I6D3mSYTE"
   },{
     title: "Caddyshack",
-    id: "x9Nl39uWEYk"
+    source: "x9Nl39uWEYk"
   },{
     title: "Dark Knight",
-    id: "EXeTwQWrcwY"
+    source: "EXeTwQWrcwY"
   },{
     title: "The Iron Giant",
-    id: "doSJxiYp9yo"
+    source: "doSJxiYp9yo"
   },{
     title: "Forrest Gump",
-    id: "bLvqoHBptjg"
+    source: "bLvqoHBptjg"
   }
 ];
 
