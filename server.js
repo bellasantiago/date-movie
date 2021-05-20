@@ -3,9 +3,9 @@ const mongoose = require("mongoose");
 const routes = require("./routes");
 const User = require('./models/users');
 const app = express();
+const bcrypt = require('bcrypt');
 
-var bcrypt = require('bcrypt')
-var saltRouds = 10
+const saltRounds = 10
 
 const PORT = process.env.PORT || 3001;
 
@@ -51,6 +51,37 @@ app.post("/signup", async (req, res) => {
     })
     .catch(err => {
       console.log("Error is", err.message);
+    });
+});
+
+// Route for user to login
+app.post("/login", async (req, res) => {
+  var newUser = {};
+  newUser.username = req.body.username;
+  newUser.password = req.body.password;
+
+  await User.findOne({ username: newUser.username })
+    .then(profile => {
+      if (!profile) {
+        res.send("User not exist");
+      } else {
+        bcrypt.compare(
+          newUser.password,
+          profile.password,
+          async (err, result) => {
+            if (err) {
+              console.log("Error is", err.message);
+            } else if (result == true) {
+              res.send("User authenticated");
+            } else {
+              res.send("User Unauthorized Access");
+            }
+          }
+        );
+      }
+    })
+    .catch(err => {
+      console.log("Error is ", err.message);
     });
 });
 
