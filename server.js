@@ -17,11 +17,10 @@ app.use(express.json());
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
-// Add routes, both API and view
-app.use(routes);
 
 // Route to create new user
 app.post("/signup", async (req, res) => {
+  console.log(req.body)
   var newUser = new User({
     username: req.body.username,
     email:req.body.email,
@@ -84,6 +83,9 @@ app.post("/login", async (req, res) => {
       console.log("Error is ", err.message);
     });
 });
+
+// Add routes, both API and view
+app.use(routes);
 
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/date-movie");
