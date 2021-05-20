@@ -3,24 +3,8 @@ import TinderCard from 'react-tinder-card';
 import YoutubeEmbed from "./YoutubeEmbed";
 import API from '../utils/API'
 
-const db = [
-  {
-    name: 'Star Wars: The Force Awakens',
-    id: 'sGbxmsDFVnE'
-  },
-  {
-    name: 'The Godfather',
-    id: 'sY1S34973zA'
-  },
-  {
-    name: 'The Matrix',
-    id: 'vKQi3bBA1y8'
-  }
-]
-
 function Cards() {
   
-  // const movies = db
   const [movies, setMovies] = useState([])
   const [lastDirection, setLastDirection] = useState()
 
