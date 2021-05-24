@@ -1,9 +1,12 @@
 const express = require("express");
 const mongoose = require("mongoose");
+var passport = require("passport");
 const routes = require("./routes");
 const User = require('./models/users');
 const app = express();
 const bcrypt = require('bcrypt');
+const jsonwt = require("jsonwebtoken");
+var key = require("./mysetup/myurl");
 
 const saltRounds = 10
 
@@ -12,6 +15,12 @@ const PORT = process.env.PORT || 3001;
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+//Passport middleware
+app.use(passport.initialize());
+
+//Config for JWT strategy
+require("./strategies/jsonwtStrategy")(passport);
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
@@ -72,6 +81,24 @@ app.post("/login", async (req, res) => {
               console.log("Error is", err.message);
             } else if (result == true) {
               res.send("User authenticated");
+              const payload = {
+                id: profile.id,
+                username: profile.username
+              };
+              jsonwt.sign(
+                payload,
+                key.secret,
+                { expiresIn: 3600 },
+                (err, token) => {
+                  if (err) {
+                    console.log("Error is ", err.message);
+                  }
+                  res.json({
+                    success: true,
+                    token: "Bearer " + token
+                  });
+                }
+              );
             } else {
               res.send("User Unauthorized Access");
             }
@@ -83,6 +110,18 @@ app.post("/login", async (req, res) => {
       console.log("Error is ", err.message);
     });
 });
+
+// Get Router
+app.get(
+  "/users",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    res.json({
+      id: req.user.id,
+      username: req.user.username
+    });
+  }
+);
 
 // Add routes, both API and view
 app.use(routes);
