@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Matched() {
     return (
@@ -17,6 +18,13 @@ function Matched() {
                     </tbody>
                 </table>
             </div>
+            <br></br>
+            <Link to="/Movies">
+                <button
+                    className="btn btn-sm btn-primary btn-block text-uppercase"
+                    type="submit"
+                >Back to Movies</button>
+            </Link>;
         </div>
     )
 }

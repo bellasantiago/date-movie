@@ -9,6 +9,7 @@ import Signup from './components/Signup'
 import Login from './components/Login'
 import { MyContext } from './utils/store'
 import API from './utils/API'
+import ProtectedRoute from './components/ProtectedRoute'
 
 function App() {
 
@@ -33,9 +34,6 @@ function App() {
         console.log(res.data.token)
       })
       .catch(err => console.log(err));
-
-    // window.location.href = '/movies'
-    // console.log()
   };
 
   return (
@@ -46,11 +44,11 @@ function App() {
             <br></br>
             <Navbar />
             <Route exact path="/" component={Home} />
-            <Route exact path="/Movies" component={Movies} />
-            <Route exact path="/Matched" component={Matched} />
+            <ProtectedRoute exact path="/Movies" token={token} component={Movies} />
+            <ProtectedRoute exact path="/Matched" token={token} component={Matched} />
             <Route exact path="/Signup" component={Signup} />
             <Route exact path="/Login">
-              <Login handleFormSubmit={handleFormSubmit}/>
+              <Login handleFormSubmit={handleFormSubmit} />
             </Route>
           </div>
         </Router>

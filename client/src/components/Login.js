@@ -1,5 +1,6 @@
 import React from 'react';
 import '../Form.css';
+import { Link } from 'react-router-dom'
 
 function Login({ handleFormSubmit }) {
 
@@ -37,10 +38,12 @@ function Login({ handleFormSubmit }) {
                                             htmlFor="inputPassword">Password</label>
                                     </div>
                                     <br></br>
-                                    <button
-                                        className="btn btn-lg btn-primary btn-block text-uppercase"
-                                        type="submit"
-                                    >Login</button>
+                                    {/* <Link to="/Movies"> */}
+                                        <button
+                                            className="btn btn-lg btn-primary btn-block text-uppercase"
+                                            type="submit"
+                                        >Login</button>
+                                    {/* </Link> */}
                                 </form>
                             </div>
                         </div>
