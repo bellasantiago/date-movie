@@ -1,4 +1,5 @@
 import React from 'react';
+import '../Form.css';
 import API from '../utils/API'
 
 function Login() {
@@ -15,7 +16,7 @@ function Login() {
             body[pair[0]] = pair[1]
         }
         console.log(body)
-        API.signUp(body)
+        API.login(body)
             .catch(err => console.log(err));
 
         // window.location.href = '/movies'
@@ -35,19 +36,32 @@ function Login() {
                                 <form className="form-signin"
                                     onSubmit={handleFormSubmit}>
                                     <div className="form-label-group">
-                                        <input type="text" id="inputUserame" className="form-control" placeholder="Username" required autoFocus />
-                                        <label htmlFor="inputUserame">Username</label>
+                                        <input
+                                            type="text"
+                                            id="inputUserame"
+                                            name="username"
+                                            className="form-control"
+                                            placeholder="Username" required autoFocus />
+                                        <label
+                                            htmlFor="inputUserame">Username</label>
                                     </div>
                                     <br></br>
                                     <div className="form-label-group">
-                                        <input type="password" id="inputPassword" className="form-control" placeholder="Password" required />
-                                        <label htmlFor="inputPassword">Password</label>
+                                        <input
+                                            type="password"
+                                            id="inputPassword"
+                                            name="password"
+                                            className="form-control"
+                                            placeholder="Password"
+                                            required />
+                                        <label
+                                            htmlFor="inputPassword">Password</label>
                                     </div>
                                     <br></br>
                                     <button
                                         className="btn btn-lg btn-primary btn-block text-uppercase"
                                         type="submit"
-                                       
+
                                     >Login</button>
 
                                 </form>

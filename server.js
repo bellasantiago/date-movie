@@ -49,6 +49,7 @@ app.post("/signup", async (req, res) => {
                 res.status(200).send(newUser);
               })
               .catch(err => {
+                console.log(err)
                 console.log("Error is ", err.message);
               });
           }
@@ -68,8 +69,10 @@ app.post("/login", async (req, res) => {
   newUser.username = req.body.username;
   newUser.password = req.body.password;
 
+  console.log(newUser)
   await User.findOne({ username: newUser.username })
     .then(profile => {
+      console.log(profile)
       if (!profile) {
         res.send("User not exist");
       } else {
@@ -77,9 +80,10 @@ app.post("/login", async (req, res) => {
           newUser.password,
           profile.password,
           async (err, result) => {
+            console.log(result)
             if (err) {
               console.log("Error is", err.message);
-            } else if (result == true) {
+            } else if (result) {
               res.send("User authenticated");
               const payload = {
                 id: profile.id,

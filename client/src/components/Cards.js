@@ -46,7 +46,7 @@ function Cards() {
             <div className="col-3" >
               <div className='card'>
                 <YoutubeEmbed embedId={movie.source} />
-                <h3><i class="fas fa-angle-double-left"></i><i class="fas fa-angle-double-left"></i> S W I P E <i class="fas fa-angle-double-right"></i><i class="fas fa-angle-double-right"></i></h3>
+                <h3><i className="fas fa-angle-double-left"></i><i className="fas fa-angle-double-left"></i> S W I P E <i className="fas fa-angle-double-right"></i><i className="fas fa-angle-double-right"></i></h3>
               </div>
             </div>
 
