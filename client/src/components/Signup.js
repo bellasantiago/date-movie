@@ -1,8 +1,12 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import '../Form.css'
 import API from '../utils/API'
+import {MyContext} from '../utils/store'
 
 function Signup() {
+
+    const token = useContext(MyContext)
+    console.log(token)
 
     const handleFormSubmit = event => {
         event.preventDefault();

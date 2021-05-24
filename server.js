@@ -84,7 +84,7 @@ app.post("/login", async (req, res) => {
             if (err) {
               console.log("Error is", err.message);
             } else if (result) {
-              res.send("User authenticated");
+              // res.send("User authenticated");
               const payload = {
                 id: profile.id,
                 username: profile.username
@@ -99,7 +99,7 @@ app.post("/login", async (req, res) => {
                   }
                   res.json({
                     success: true,
-                    token: "Bearer " + token
+                    token: token
                   });
                 }
               );

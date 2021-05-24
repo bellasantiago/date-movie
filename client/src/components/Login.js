@@ -1,28 +1,7 @@
 import React from 'react';
 import '../Form.css';
-import API from '../utils/API'
 
-function Login() {
-
-    const handleFormSubmit = event => {
-        event.preventDefault();
-        console.log(event.target);
-
-        let formData = new FormData(event.target);
-
-        let body = {};
-
-        for (let pair of formData.entries()) {
-            body[pair[0]] = pair[1]
-        }
-        console.log(body)
-        API.login(body)
-            .catch(err => console.log(err));
-
-        // window.location.href = '/movies'
-        // console.log()
-    };
-
+function Login({ handleFormSubmit }) {
 
     return (
         <div>
@@ -61,9 +40,7 @@ function Login() {
                                     <button
                                         className="btn btn-lg btn-primary btn-block text-uppercase"
                                         type="submit"
-
                                     >Login</button>
-
                                 </form>
                             </div>
                         </div>
@@ -71,6 +48,7 @@ function Login() {
                 </div>
             </div>
         </div>
+
     )
 }
 
