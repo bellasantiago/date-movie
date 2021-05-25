@@ -99,6 +99,7 @@ app.post("/login", async (req, res) => {
                   }
                   res.json({
                     success: true,
+                    id: profile.id,
                     token: token
                   });
                 }

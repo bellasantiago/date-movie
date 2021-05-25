@@ -5,7 +5,7 @@ function Matched() {
     return (
         <div>
             <div className="jumbotron jumbotron-fluid">
-                <table class="table">
+                <table className="table">
                     <thead>
                         <tr>
                             <th scope="col">MATCHED MOVIES</th>

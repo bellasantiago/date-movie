@@ -14,6 +14,7 @@ import ProtectedRoute from './components/ProtectedRoute'
 function App() {
 
   const [token, setToken] = useState(null)
+  const [userId, setUserId] = useState(null)
 
   const handleFormSubmit = event => {
     event.preventDefault();
@@ -27,17 +28,20 @@ function App() {
       body[pair[0]] = pair[1]
     }
     console.log(body)
-    API.login(body)
+    
+    return API.login(body)
       .then(res => {
         console.log("Accept Token")
         setToken(res.data.token)
+        setUserId(res.data.id)
         console.log(res.data.token)
+        console.log(res.data.id)
       })
       .catch(err => console.log(err));
   };
 
   return (
-    <MyContext.Provider value={token}>
+    <MyContext.Provider value={{token, userId}}>
       <div className="app">
         <Router>
           <div>

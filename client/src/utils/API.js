@@ -18,4 +18,13 @@ export default {
   login: function (body) {
     return axios.post("login", body);
   },
+  // Save movie
+  saveMovie: function (movie) {
+    return axios.post("api/users", movie);
+  },
+  // Gets logged in user
+  getUser: function (id) {
+    return axios.get("api/users/" + id);
+  },
+
 };  

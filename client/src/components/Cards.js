@@ -1,33 +1,50 @@
-import { React, useEffect, useState } from 'react';
+import { React, useEffect, useState, useContext } from 'react';
 import TinderCard from 'react-tinder-card';
 import YoutubeEmbed from "./YoutubeEmbed";
 import API from '../utils/API'
+import { MyContext } from '../utils/store'
 
 function Cards() {
-  
+
+  const { userId } = useContext(MyContext);
   const [movies, setMovies] = useState([])
   const [lastDirection, setLastDirection] = useState()
+  const [movieChoices, setmovieChoices] = useState([])
 
-  // Load all books and store them with setBooks
+  // Load all movies and store them with setMovies
   useEffect(() => {
     API.getMovies()
-      .then(res => 
+      .then(res =>
         setMovies(res.data)
       )
       .catch(err => console.log(err));
   }, [])
 
-  const swiped = (direction, nameToDelete) => {
-    console.log('removing: ' + nameToDelete)
+  // Get Logged in User
+  useEffect(() => {
+    API.getUser(userId)
+      .then(res => 
+        setmovieChoices(res.data.movies)
+      )
+      .catch(err => console.log(err));
+  }, [userId])
+  console.log(movieChoices)
+
+  const swiped = (direction, movieTitle) => {
+    console.log('removing: ' + movieTitle)
     setLastDirection(direction)
+    if (direction === "right") {
+      setmovieChoices([...movieChoices, movieTitle])
+      console.log(movieChoices)
+    }
   }
 
   const outOfFrame = (title) => {
-    console.log(title + ' left the screen!')
+    // console.log(title + ' left the screen!')
   }
 
   return (
-    <div> 
+    <div>
       <br></br>
       <br></br>
       <br></br>
@@ -40,7 +57,8 @@ function Cards() {
             className='swipe'
             key={movie.title}
             onSwipe={(dir) =>
-              swiped(dir, movie.title)}
+              swiped(dir, movie.title)              
+            }
             onCardLeftScreen={() =>
               outOfFrame(movie.title)}>
             <div className="col-3" >

@@ -1,8 +1,16 @@
 import React from 'react';
 import '../Form.css';
-import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 function Login({ handleFormSubmit }) {
+
+    const history = useHistory()
+
+    const handleClick = (e) => {
+        e.preventDefault()
+        handleFormSubmit(e)
+            .then(data => history.push("/Movies"))
+    }
 
     return (
         <div>
@@ -14,7 +22,7 @@ function Login({ handleFormSubmit }) {
                             <div className="card-body">
                                 <h6 className="card-title text-center">Login</h6>
                                 <form className="form-signin"
-                                    onSubmit={handleFormSubmit}>
+                                    onSubmit={handleClick}>
                                     <div className="form-label-group">
                                         <input
                                             type="text"
@@ -38,12 +46,10 @@ function Login({ handleFormSubmit }) {
                                             htmlFor="inputPassword">Password</label>
                                     </div>
                                     <br></br>
-                                    {/* <Link to="/Movies"> */}
-                                        <button
-                                            className="btn btn-lg btn-primary btn-block text-uppercase"
-                                            type="submit"
-                                        >Login</button>
-                                    {/* </Link> */}
+                                    <button
+                                        className="btn btn-lg btn-primary btn-block text-uppercase"
+                                        type="submit"
+                                    >Login</button>
                                 </form>
                             </div>
                         </div>
