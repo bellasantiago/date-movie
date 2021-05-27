@@ -9,7 +9,6 @@ function Cards() {
   const { userId } = useContext(MyContext);
   const [movies, setMovies] = useState([])
   const [lastDirection, setLastDirection] = useState()
-  // const [movieChoices, setMovieChoices] = useState([])
 
   // Load all movies and store them with setMovies
   useEffect(() => {
@@ -19,38 +18,19 @@ function Cards() {
         setMovies(res.data)
       )
       .catch(err => console.log(err));
-
-    // API.getUser(userId)
-    //   .then(res => {
-    //     // setMovieChoices(res.data.movies)
-    //     // console.log("User: " + JSON.stringify(res.data))
-    //   })
-    //   .catch(err => console.log(err));
   }, [userId])
 
-  // Get Logged in User
-  // useEffect(() => {
-  //   API.getUser(userId)
-  //     .then(res => 
-  //       setMovieChoices(res.data.movies)
-  //     )
-  //     .catch(err => console.log(err));
-  // }, [])
-  // console.log(movieChoices)
 
   const swiped = (direction, movieTitle) => {
-    // console.log(movieChoices);
     console.log(movieTitle);
     setLastDirection(direction)
     if (direction === "right") {
-      // setMovieChoices([...movieChoices, movieTitle])
       API.updateMovie(userId, movieTitle)
-      .catch(err => console.log(err));
+        .catch(err => console.log(err));
     }
   }
 
   const outOfFrame = (title) => {
-    // console.log(title + ' left the screen!')
   }
 
   return (
