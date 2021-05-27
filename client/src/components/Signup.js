@@ -1,8 +1,7 @@
 import React, {useContext} from 'react'
 import '../Form.css'
 import API from '../utils/API'
-import {MyContext} from '../utils/store'
-import { Link } from 'react-router-dom'
+import { MyContext } from '../utils/store'
 
 function Signup() {
 
@@ -23,6 +22,8 @@ function Signup() {
         console.log(body)
         API.signUp(body)
             .catch(err => console.log(err));
+        console.log(body)
+        
     };
 
     return (
@@ -68,12 +69,12 @@ function Signup() {
                                         required />
                                     <label htmlFor="inputPassword">Password</label>
                                 </div>
-                                <Link to="/">
+                                {/* <Link to="/"> */}
                                 <button
                                     className="btn btn-lg btn-primary btn-block text-uppercase"
                                     type="submit"
                                 >Register</button>
-                                </Link>
+                                {/* </Link> */}
                             </form>
                         </div>
                     </div>
