@@ -32,7 +32,7 @@ app.post("/signup", async (req, res) => {
   console.log(req.body)
   var newUser = new User({
     username: req.body.username,
-    email:req.body.email,
+    email: req.body.email,
     password: req.body.password
   });
   await User.findOne({ username: newUser.username })
@@ -132,9 +132,16 @@ app.get(
 app.use(routes);
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/date-movie");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/date-movie",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false
+  }
+);
 
 // Start the API server
-app.listen(PORT, function() {
+app.listen(PORT, function () {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });
