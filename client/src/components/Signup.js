@@ -1,9 +1,12 @@
-import React, {useContext} from 'react'
+import React, { useContext } from 'react'
 import '../Form.css'
 import API from '../utils/API'
 import { MyContext } from '../utils/store'
+import { useHistory } from 'react-router-dom'
 
 function Signup() {
+
+    const history = useHistory()
 
     const token = useContext(MyContext)
     console.log(token)
@@ -21,9 +24,10 @@ function Signup() {
         }
         console.log(body)
         API.signUp(body)
+            .then(data => history.push("/"))
             .catch(err => console.log(err));
         console.log(body)
-        
+
     };
 
     return (
