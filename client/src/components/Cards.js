@@ -9,33 +9,43 @@ function Cards() {
   const { userId } = useContext(MyContext);
   const [movies, setMovies] = useState([])
   const [lastDirection, setLastDirection] = useState()
-  const [movieChoices, setmovieChoices] = useState([])
+  // const [movieChoices, setMovieChoices] = useState([])
 
   // Load all movies and store them with setMovies
   useEffect(() => {
+    console.log("useEffect");
     API.getMovies()
       .then(res =>
         setMovies(res.data)
       )
       .catch(err => console.log(err));
-  }, [])
+
+    // API.getUser(userId)
+    //   .then(res => {
+    //     // setMovieChoices(res.data.movies)
+    //     // console.log("User: " + JSON.stringify(res.data))
+    //   })
+    //   .catch(err => console.log(err));
+  }, [userId])
 
   // Get Logged in User
-  useEffect(() => {
-    API.getUser(userId)
-      .then(res => 
-        setmovieChoices(res.data.movies)
-      )
-      .catch(err => console.log(err));
-  }, [userId])
-  console.log(movieChoices)
+  // useEffect(() => {
+  //   API.getUser(userId)
+  //     .then(res => 
+  //       setMovieChoices(res.data.movies)
+  //     )
+  //     .catch(err => console.log(err));
+  // }, [])
+  // console.log(movieChoices)
 
   const swiped = (direction, movieTitle) => {
-    console.log('removing: ' + movieTitle)
+    // console.log(movieChoices);
+    console.log(movieTitle);
     setLastDirection(direction)
     if (direction === "right") {
-      setmovieChoices([...movieChoices, movieTitle])
-      console.log(movieChoices)
+      // setMovieChoices([...movieChoices, movieTitle])
+      API.updateMovie(userId, movieTitle)
+      .catch(err => console.log(err));
     }
   }
 
@@ -57,7 +67,7 @@ function Cards() {
             className='swipe'
             key={movie.title}
             onSwipe={(dir) =>
-              swiped(dir, movie.title)              
+              swiped(dir, movie.title)
             }
             onCardLeftScreen={() =>
               outOfFrame(movie.title)}>
@@ -76,6 +86,7 @@ function Cards() {
       <br></br>
       <br></br>
       <br></br>
+      {/* eslint-disable-next-line */}
       {lastDirection ? <h2 className='infoText'>You swiped {lastDirection}</h2> : <h2 className='infoText' />}
     </div>
   )

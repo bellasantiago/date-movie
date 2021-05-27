@@ -19,8 +19,8 @@ export default {
     return axios.post("login", body);
   },
   // Save movie
-  saveMovie: function (movie) {
-    return axios.post("api/users", movie);
+  updateMovie: function (id, movieTitle) {
+    return axios.put("api/users/" + id, {title: movieTitle});
   },
   // Gets logged in user
   getUser: function (id) {
