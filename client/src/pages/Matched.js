@@ -12,7 +12,6 @@ function Matched() {
 
     // Load User data
     useEffect(() => {
-        console.log("useEffect");
         API.getUser(userId)
             .then(res => {
                 setCurrentUserMovies(res.data.movies)
@@ -44,11 +43,11 @@ function Matched() {
                 >Send</button>
             </div>
 
-            <div className="jumbotron jumbotron-fluid">
+            <div className="jumbotron jumbotron-fluid" id="matchedJumbo">
                 <table className="table">
                     <thead>
                         <tr>
-                            <th scope="col">MATCHED MOVIES</th>
+                            <th scope="col">MATCHED MOVIES WITH SAMPLE USER</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -59,9 +58,6 @@ function Matched() {
                                 </tr>
                             )
                         })}
-
-
-
                     </tbody>
                 </table>
             </div>

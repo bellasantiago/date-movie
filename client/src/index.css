@@ -15,3 +15,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#matchedJumbo {
+  background-color: rgba(255, 255, 255, 0.589);
+  width: 100%;
+}
