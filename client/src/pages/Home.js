@@ -9,6 +9,7 @@ function Home() {
                     type="video/mp4"
                     autoPlay={true}
                     loop={true}
+                    muted={true}
                 />
             </div>
         </div>
