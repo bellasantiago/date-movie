@@ -12,7 +12,7 @@ function Cards() {
 
   // Load all movies and store them with setMovies
   useEffect(() => {
-    console.log("useEffect");
+    // console.log("useEffect");
     API.getMovies()
       .then(res =>
         setMovies(res.data)

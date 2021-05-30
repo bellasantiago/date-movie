@@ -9,13 +9,17 @@ function Matched() {
     // const [matchedMovies, setMatchedMovies] = useState([])
     const [currentUserMovies, setCurrentUserMovies] = useState([]);
 
-
     // Load User data
     useEffect(() => {
         API.getUser(userId)
             .then(res => {
                 setCurrentUserMovies(res.data.movies)
                 console.log(currentUserMovies)
+            })
+            .catch(err => console.log(err));
+        API.getUsers()
+            .then(res => {
+                console.log(res.data)
             })
             .catch(err => console.log(err));
     }, [])
